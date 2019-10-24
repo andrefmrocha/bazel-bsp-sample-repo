@@ -56,9 +56,9 @@ maven_jar(
 # For guava
 http_archive(
     name = "rules_jvm_external",
-    strip_prefix = "rules_jvm_external-1.2",
-    sha256 = "e5c68b87f750309a79f59c2b69ead5c3221ffa54ff9496306937bfa1c9c8c86b",
-    url = "https://github.com/bazelbuild/rules_jvm_external/archive/1.2.zip"
+    strip_prefix = "rules_jvm_external-2.8",
+    sha256 = "79c9850690d7614ecdb72d68394f994fef7534b292c4867ce5e7dec0aa7bdfad",
+    url = "https://github.com/bazelbuild/rules_jvm_external/archive/2.8.zip"
 )
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
