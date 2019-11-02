@@ -1,26 +1,26 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 # bazel-skylib 0.8.0 released 2019.03.20 (https://github.com/bazelbuild/bazel-skylib/releases/tag/0.8.0)
-skylib_version = "0.8.0"
+skylib_version = "1.0.2"
 http_archive(
     name = "bazel_skylib",
     type = "tar.gz",
-    url = "https://github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel-skylib.{}.tar.gz".format (skylib_version, skylib_version),
-    sha256 = "2ef429f5d7ce7111263289644d233707dba35e39696377ebab8b0bc701f7818e",
+    url = "https://github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel-skylib-{}.tar.gz".format (skylib_version, skylib_version),
+    sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
 )
 
 # For bazel_bsp aspect
 http_archive(
     name = "bazel_bsp",
-    url = "https://github.com/illicitonion/bazel-bsp/archive/c64465f6923c8ccc559157851f9d1296d8687d6e.tar.gz",
-    strip_prefix = "bazel-bsp-c64465f6923c8ccc559157851f9d1296d8687d6e",
+    url = "https://github.com/illicitonion/bazel-bsp/archive/70027a19fd4e22f03ad629fedf3214f91ca9d675.tar.gz",
+    strip_prefix = "bazel-bsp-70027a19fd4e22f03ad629fedf3214f91ca9d675",
 )
 
 # For rules_scala
 http_archive(
     name = "io_bazel_rules_scala",
-    url = "https://github.com/andrefmrocha/rules_scala/archive/b858a6f95aee970523772257158fe8b259b10c61.tar.gz",
-    strip_prefix = "rules_scala-b858a6f95aee970523772257158fe8b259b10c61",
+    url = "https://github.com/andrefmrocha/rules_scala/archive/8585c896774aac30b28092a32b90c97890a41c0b.tar.gz",
+    strip_prefix = "rules_scala-8585c896774aac30b28092a32b90c97890a41c0b",
 )
 
 load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
@@ -36,8 +36,8 @@ scala_repositories((
     }
 ))
 
-protobuf_version="09745575a923640154bcf307fba8aedff47f240a"
-protobuf_version_sha256="416212e14481cff8fd4849b1c1c1200a7f34808a54377e22d7447efdf54ad758"
+protobuf_version="31ebe2ac71400344a5db91ffc13c4ddfb7589f92"
+protobuf_version_sha256="0e8e32d44c9d4572975f43591b51cd3c77392661e4ded17fdfab81e8460344e8"
 
 http_archive(
     name = "com_google_protobuf",
@@ -46,12 +46,20 @@ http_archive(
     sha256 = protobuf_version_sha256,
 )
 
+load("@io_bazel_rules_scala//scala:scala_maven_import_external.bzl", "scala_maven_import_external")
+load("@io_bazel_rules_scala//scala:scala_cross_version.bzl", "default_scala_major_version", "scala_mvn_artifact")
+load("@io_bazel_rules_scala//scala:scala_cross_version.bzl", "default_maven_server_urls")
 
 # Exp
-maven_jar(
+scala_maven_import_external(
     name = "com_illicitonion_scalac_composite_reporter",
-    artifact = "com.illicitonion:scalac-composite-reporter_2.12:0.0.1",
-    sha256 = "9e3655fa282adbc6686805d9a745131f18819a15402b20d08fb39253f3b5a5aa",
+    artifact = scala_mvn_artifact(
+        "com.illicitonion:scalac-composite-reporter:0.0.1",
+        default_scala_major_version(),
+    ),
+    artifact_sha256 = "9e3655fa282adbc6686805d9a745131f18819a15402b20d08fb39253f3b5a5aa",
+    licenses = ["notice"],
+    server_urls = default_maven_server_urls(),
 )
 
 # For guava
