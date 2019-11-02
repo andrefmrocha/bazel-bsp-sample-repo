@@ -3,8 +3,8 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 # For bazel_bsp aspect
 http_archive(
     name = "bazel_bsp",
-    url = "https://github.com/illicitonion/bazel-bsp/archive/fe410bef77231e03c34b339375b252f36a4c66a6.tar.gz",
-    strip_prefix = "bazel-bsp-fe410bef77231e03c34b339375b252f36a4c66a6",
+    url = "https://github.com/illicitonion/bazel-bsp/archive/c64465f6923c8ccc559157851f9d1296d8687d6e.tar.gz",
+    strip_prefix = "bazel-bsp-c64465f6923c8ccc559157851f9d1296d8687d6e",
 )
 
 # For rules_scala
