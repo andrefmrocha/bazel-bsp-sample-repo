@@ -1,7 +1,7 @@
 package dep
 
-import com.google.common.collect.Lists;
+import dep.deeper.DeeperTest
 
 object Dep {
-  val list = Lists.newArrayList("sup")
+  val list = List(Test.test() + JavaTest.value + DeeperTest.value)
 }

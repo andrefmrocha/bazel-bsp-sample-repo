@@ -12,8 +12,8 @@ http_archive(
 # For bazel_bsp aspect
 http_archive(
     name = "bazel_bsp",
-    url = "https://github.com/illicitonion/bazel-bsp/archive/70027a19fd4e22f03ad629fedf3214f91ca9d675.tar.gz",
-    strip_prefix = "bazel-bsp-70027a19fd4e22f03ad629fedf3214f91ca9d675",
+    url = "https://github.com/andrefmrocha/bazel-bsp/archive/09ef0c343c474bcad33a6a302dfd6a07cf37ea14.tar.gz",
+    strip_prefix = "bazel-bsp-09ef0c343c474bcad33a6a302dfd6a07cf37ea14",
 )
 
 # For rules_scala
